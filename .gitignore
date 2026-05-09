@@ -1,0 +1,19 @@
+# Archivos ocultos de macOS (Fundamental si lo revisan en Mac)
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Archivos ocultos de Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+*.cab
+Desktop.ini
+
+# Carpetas del editor Visual Studio Code
+.vscode/
+
+# Historial de comandos o logs (por si acaso)
+*.log
