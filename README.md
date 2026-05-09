@@ -3,12 +3,12 @@
 Este repositorio contiene la implementación práctica en código de dos patrones de diseño creacionales fundamentales basados en el libro *Design Patterns: Elements of Reusable Object-Oriented Software* (Gang of Four).
 
 # Integrantes del equipo 
-Luz Fernanda Herrera Juárez
-Víctor Alejandro Gómez Carballo
+* Luz Fernanda Herrera Juárez
+* Víctor Alejandro Gómez Carballo
 
 ---
 
-## 🧩 Patrones Implementados y Problemas que Resuelven
+## Patrones Implementados y Problemas que Resuelven
 
 ### 1. Abstract Factory
 * **El problema que resuelve:** En sistemas donde se manejan múltiples "familias" de productos que están diseñados para funcionar en conjunto, el código tiende a acoplarse fuertemente a las clases concretas. Si se agregan nuevas familias de productos, el código principal debe ser modificado, rompiendo el principio de Abierto/Cerrado.
@@ -20,7 +20,7 @@ Víctor Alejandro Gómez Carballo
 
 ---
 
-## 🛠️ Herramientas Usadas
+## Herramientas Usadas
 * **Lenguaje:** PHP (Nativo)
 * **Entorno de ejecución:** XAMPP (como proveedor del intérprete PHP)
 * **Editor:** Visual Studio Code
@@ -28,32 +28,34 @@ Víctor Alejandro Gómez Carballo
 
 ---
 
-## ⚙️ Requisitos Previos (Prerrequisitos)
+## Requisitos Previos (Prerrequisitos)
 
 Para poder ejecutar este proyecto, es estrictamente necesario tener el intérprete de **PHP** instalado en la máquina local y configurado en las variables de entorno del sistema.
 
 Puedes cumplir con este requisito de la siguientes manera:
 1. Instalando la suite **[XAMPP](https://www.apachefriends.org/es/index.html)** (o similares como WAMP/MAMP), la cual incluye PHP por defecto.
 2. Ejecuta el archivo descargado .exe, cotinuar seleccionando next. 
-3.Cuando solicite una carpeta de instalación, debe ser exactamente : C:\xampp 
-3. Termina el proceso de instalación con next
+3. Cuando solicite una carpeta de instalación, debe ser exactamente : C:\xampp 
+4. Termina el proceso de instalación con next
 
 Configuración de variables de entorno PHP
-1.Abrir en Windows y buscar 'Variables de entorno'
-2.Selecciona 'Editar las variables de entorno del sistema'
-3.En la ventana que se abre, haz clic en el botón de hasta abajo que dice "Variables de entorno...".
-4.En la variable Path, selecciona y haz clic en "Editar". 
-5.Seleccionar "Nuevo" y pegar la ruta exacta donde se instalo la carpeta de PHP de XAMPP.
-6.Selecciona en "Aceptar". 
+1. Abrir en Windows y buscar **'Variables de entorno'**
+2. Selecciona **'Editar las variables de entorno del sistema'**
+3. En la ventana que se abre, haz clic en el botón de hasta abajo que dice **"Variables de entorno..."**.
+4. En la variable Path, selecciona y haz clic en **"Editar"**. 
+5. Seleccionar **"Nuevo"** y pegar la ruta exacta donde se instalo la carpeta de PHP de XAMPP.
+6. Selecciona en **"Aceptar"**. 
 
 Verificar lo anterior : 
-1. En la consola escribir el comando : php -v. 
-2. El resultado debe se rla verdión de PHP
+1. En la consola escribir el comando : 
+    ```bash
+    php -v. 
+2. El resultado debe ser la versión de PHP
 
 
 ---
 
-## 📦 Instalación de Dependencias
+## Instalación de Dependencias
 
 Este proyecto está desarrollado con código puro (Vanilla PHP) orientado a objetos. **No requiere** la instalación de dependencias externas, librerías adicionales ni el uso de gestores de paquetes (como Composer). 
 
@@ -61,7 +63,7 @@ Este proyecto está desarrollado con código puro (Vanilla PHP) orientado a obje
 
 ---
 
-## 🚀 Cómo ejecutar los ejemplos
+## Cómo ejecutar los ejemplos
 
 Para ejecutar y probar este proyecto, utilizaremos la interfaz de línea de comandos (CLI) de PHP. Abre tu terminal asegurándote de estar ubicado en la carpeta raíz de este repositorio y sigue estos pasos:
 
@@ -70,8 +72,10 @@ Este patrón demuestra la creación de familias de objetos. Para verlo en funcio
 
 1. Navega a la carpeta del patrón:
    ```bash
+   cd ..
    cd AbstractFactory
 2. Para ejecutarlo 
+    ```bash
     php abstractFactoryIndex.php
 
 ### 🔹 Ejecutar el ejemplo de Builder
@@ -81,4 +85,6 @@ Este patrón demuestra la construcción paso a paso de un objeto complejo. Para 
    ```bash
    cd ..
    cd Builder
-2. php builderIndex.php
+2. Para ejecutarlo
+    ```bash
+   php builderIndex.php
