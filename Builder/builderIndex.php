@@ -1,66 +1,69 @@
 <?php
+/*
+Producto abstracto
+*/
 
-// ======================================
-// Producto abstracto
-// ======================================
+abstract class Casa {
 
-abstract class Casa
-{
     protected array $partes = [];
 
     abstract public function agregarParte(string $parte): void;
 
     abstract public function mostrarCasa(): void;
+
 }
 
-// ======================================
-// Casa Moderna
-// ======================================
+/*
+Producto concreto
+Casa Moderna
+*/
 
-class CasaModerna extends Casa
-{
-    public function agregarParte(string $parte): void
-    {
+class CasaModerna extends Casa {
+
+    public function agregarParte(string $parte): void {
         $this->partes[] = $parte;
     }
 
-    public function mostrarCasa(): void
-    {
+    public function mostrarCasa(): void {
+        
         echo "Casa moderna\n";
 
         foreach ($this->partes as $p) {
             echo $p . "\n";
         }
+
     }
+
 }
 
-// ======================================
-// Casa Clasica
-// ======================================
+/*
+Producto concreto
+Casa Clasica
+*/
 
-class CasaClasica extends Casa
-{
-    public function agregarParte(string $parte): void
-    {
+class CasaClasica extends Casa {
+
+    public function agregarParte(string $parte): void {
         $this->partes[] = $parte;
     }
 
-    public function mostrarCasa(): void
-    {
+    public function mostrarCasa(): void { 
+
         echo "Casa clásica\n";
 
         foreach ($this->partes as $p) {
             echo $p . "\n";
         }
+
     }
 }
 
-// ======================================
-// Constructor abstracto
-// ======================================
+/*
+Constructor abstracto
+*/
 
-abstract class ConstructorCasa
-{
+abstract class ConstructorCasa {
+
     protected Casa $casa;
 
     abstract public function construirParedes(string $material): void;
@@ -69,93 +72,87 @@ abstract class ConstructorCasa
 
     abstract public function construirPuertas(string $material): void;
 
-    public function resultado(): Casa
-    {
+    public function resultado(): Casa {
         return $this->casa;
-    }
+   }
+
 }
 
-// ======================================
-// Constructor Casa Moderna
-// ======================================
+/*
+Constructor Concreto
+Casa Moderna
+*/
 
-class ConstructorCasaModerna extends ConstructorCasa
-{
-    public function __construct()
-    {
+class ConstructorCasaModerna extends ConstructorCasa {
+    
+    public function __construct() {
         $this->casa = new CasaModerna();
     }
 
-    public function construirParedes(string $material): void
-    {
+    public function construirParedes(string $material): void   {
         $parte = "Paredes modernas de $material";
 
         $this->casa->agregarParte($parte);
     }
 
-    public function construirTecho(string $material): void
-    {
+    public function construirTecho(string $material): void {
         $parte = "Techo moderno de $material";
 
         $this->casa->agregarParte($parte);
     }
 
-    public function construirPuertas(string $material): void
-    {
+    public function construirPuertas(string $material): void {
         $parte = "Puertas minimalistas de $material";
 
         $this->casa->agregarParte($parte);
     }
+
 }
 
-// ======================================
-// Constructor Casa Clasica
-// ======================================
+/*
+Constructor concreto
+Casa Clasica
+*/
 
-class ConstructorCasaClasica extends ConstructorCasa
-{
-    public function __construct()
-    {
+class ConstructorCasaClasica extends ConstructorCasa {
+
+    public function __construct() {
         $this->casa = new CasaClasica();
     }
 
-    public function construirParedes(string $material): void
-    {
+    public function construirParedes(string $material): void {
         $parte = "Paredes clasicas de $material";
 
         $this->casa->agregarParte($parte);
     }
 
-    public function construirTecho(string $material): void
-    {
+    public function construirTecho(string $material): void {
         $parte = "Techo clasico de $material";
 
         $this->casa->agregarParte($parte);
     }
 
-    public function construirPuertas(string $material): void
-    {
+    public function construirPuertas(string $material): void {
         $parte = "Puertas de madera de $material";
 
         $this->casa->agregarParte($parte);
     }
+
 }
 
-// ======================================
-// Director
-// ======================================
+/*
+Director
+*/
 
-class Arquitecto
-{
+class Arquitecto {
+
     protected ConstructorCasa $constructor;
 
-    public function __construct(ConstructorCasa $constructor)
-    {
+    public function __construct(ConstructorCasa $constructor){
         $this->constructor = $constructor;
     }
 
-    public function construir(string $material): Casa
-    {
+    public function construir(string $material): Casa {
         $this->constructor->construirParedes($material);
 
         $this->constructor->construirTecho($material);
@@ -164,13 +161,14 @@ class Arquitecto
 
         return $this->constructor->resultado();
     }
+    
 }
 
-// ======================================
-// Cliente
-// ======================================
+/*
+Cliente
+*/
 
-echo "Desea construir una Casa Moderna (1) o Clasica (2): ";
+echo "Desea construir una Casa Moderna (1) o Clasica (2)?: ";
 
 $seleccion = trim(fgets(STDIN));
 
@@ -189,3 +187,4 @@ echo "\n";
 $casa->mostrarCasa();
 
 ?>
+

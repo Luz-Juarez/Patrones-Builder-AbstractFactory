@@ -1,22 +1,18 @@
 <?php
 
-// ======================================
-// Clase abstracta Automovil
-// ======================================
+/*
+Producto abstracto
+Automovil
+*/
 
-abstract class Automovil
-{
+abstract class Automovil {
+
     protected string $modelo;
     protected string $color;
     protected int $potencia;
     protected float $espacio;
 
-    public function __construct(
-        string $modelo,
-        string $color,
-        int $potencia,
-        float $espacio
-    ) {
+    public function __construct(string $modelo, string $color, int $potencia, float $espacio) {
         $this->modelo = $modelo;
         $this->color = $color;
         $this->potencia = $potencia;
@@ -24,182 +20,167 @@ abstract class Automovil
     }
 
     abstract public function mostrarCaracteristicas(): void;
+
 }
 
-// ======================================
-// Automovil Electrico
-// ======================================
+/*
+Producto concreto 
+Automovil Electrico
+*/
 
-class AutomovilElectrico extends Automovil
-{
-    public function mostrarCaracteristicas(): void
-    {
+class AutomovilElectrico extends Automovil {
+
+    public function mostrarCaracteristicas(): void{
         echo "Automovil electrico\n";
         echo "Modelo: $this->modelo\n";
         echo "Color: $this->color\n";
         echo "Potencia: $this->potencia\n";
         echo "Espacio: $this->espacio\n";
     }
+
 }
 
-// ======================================
-// Automovil Gasolina
-// ======================================
+/*
+Producto concreto
+Automovil Gasolina
+*/
 
-class AutomovilGasolina extends Automovil
-{
-    public function mostrarCaracteristicas(): void
-    {
+class AutomovilGasolina extends Automovil {
+
+    public function mostrarCaracteristicas(): void {
         echo "Automovil de gasolina\n";
         echo "Modelo: $this->modelo\n";
         echo "Color: $this->color\n";
         echo "Potencia: $this->potencia\n";
         echo "Espacio: $this->espacio\n";
     }
+
 }
 
-// ======================================
-// Clase abstracta Motocicleta
-// ======================================
+/*
+Producto abstracto 
+Motocicleta
+*/
 
-abstract class Motocicleta
-{
+abstract class Motocicleta {
+
     protected string $modelo;
     protected string $color;
     protected int $potencia;
 
-    public function __construct(
-        string $modelo,
-        string $color,
-        int $potencia
-    ) {
+    public function __construct(string $modelo, string $color, int $potencia) {
         $this->modelo = $modelo;
         $this->color = $color;
         $this->potencia = $potencia;
     }
 
     abstract public function mostrarCaracteristicas(): void;
+
 }
 
-// ======================================
-// Motocicleta Electrica
-// ======================================
+/*
+Producto concreto
+Motocicleta Electrica
+*/
 
-class MotocicletaElectrica extends Motocicleta
-{
-    public function mostrarCaracteristicas(): void
-    {
+class MotocicletaElectrica extends Motocicleta {
+
+    public function mostrarCaracteristicas(): void {
         echo "Motocicleta electrica\n";
         echo "Modelo: $this->modelo\n";
         echo "Color: $this->color\n";
         echo "Potencia: $this->potencia\n";
     }
+
 }
 
-// ======================================
-// Motocicleta Gasolina
-// ======================================
+/*
+Producto concreto
+Motocicleta Gasolina
+*/
 
-class MotocicletaGasolina extends Motocicleta
-{
-    public function mostrarCaracteristicas(): void
-    {
+class MotocicletaGasolina extends Motocicleta {
+
+    public function mostrarCaracteristicas(): void {
         echo "Motocicleta de gasolina\n";
         echo "Modelo: $this->modelo\n";
         echo "Color: $this->color\n";
         echo "Potencia: $this->potencia\n";
     }
+
 }
 
-// ======================================
-// Interface FabricaVehiculo
-// ======================================
+/*
+Interfaz Fabrica abstracta
+FabricaVehiculo
+*/
 
-interface FabricaVehiculo
-{
-    public function crearAutomovil(
-        string $modelo,
-        string $color,
-        int $potencia,
-        float $espacio
-    ): Automovil;
+interface FabricaVehiculo {
 
-    public function crearMotocicleta(
-        string $modelo,
-        string $color,
-        int $potencia
-    ): Motocicleta;
+    public function crearAutomovil(string $modelo, string $color, int $potencia, float $espacio): Automovil;
+    public function crearMotocicleta(string $modelo, string $color, int $potencia): Motocicleta;
+
 }
 
-// ======================================
-// Fabrica Electrica
-// ======================================
+/*
+Fabrica concreta
+Fabrica Vehiculo Electrico
+*/
 
-class FabricaVehiculoElectrico implements FabricaVehiculo
-{
-    public function crearAutomovil(
-        string $modelo,
-        string $color,
-        int $potencia,
-        float $espacio
-    ): Automovil {
+class FabricaVehiculoElectrico implements FabricaVehiculo {
+
+    public function crearAutomovil(string $modelo, string $color, int $potencia, float $espacio): Automovil {
+
         return new AutomovilElectrico(
             $modelo,
             $color,
             $potencia,
             $espacio
         );
+
     }
 
-    public function crearMotocicleta(
-        string $modelo,
-        string $color,
-        int $potencia
-    ): Motocicleta {
+    public function crearMotocicleta(string $modelo, string $color, int $potencia): Motocicleta {
+
         return new MotocicletaElectrica(
             $modelo,
             $color,
             $potencia
         );
+
     }
 }
 
-// ======================================
-// Fabrica Gasolina
-// ======================================
+/*
+Fabrica concreta
+Fabrica Gasolina
+*/
+class FabricaVehiculoGasolina implements FabricaVehiculo{
+    public function crearAutomovil(string $modelo, string $color, int $potencia, float $espacio): Automovil {
 
-class FabricaVehiculoGasolina implements FabricaVehiculo
-{
-    public function crearAutomovil(
-        string $modelo,
-        string $color,
-        int $potencia,
-        float $espacio
-    ): Automovil {
         return new AutomovilGasolina(
             $modelo,
             $color,
             $potencia,
             $espacio
         );
+
     }
 
-    public function crearMotocicleta(
-        string $modelo,
-        string $color,
-        int $potencia
-    ): Motocicleta {
+    public function crearMotocicleta(string $modelo, string $color, int $potencia): Motocicleta {
+
         return new MotocicletaGasolina(
             $modelo,
             $color,
             $potencia
         );
+
     }
 }
 
-// ======================================
-// Cliente
-// ======================================
+/*
+Cliente
+*/
 
 echo "Seleccione una fabrica:\n";
 echo "1. Vehiculos electricos\n";
@@ -229,12 +210,12 @@ $motocicleta = $fabrica->crearMotocicleta(
 );
 
 echo "\n";
-echo "=== AUTOMOVIL ===\n";
+echo "Automovil: \n";
 
 $automovil->mostrarCaracteristicas();
 
 echo "\n";
-echo "=== MOTOCICLETA ===\n";
+echo "Motocicleta:\n";
 
 $motocicleta->mostrarCaracteristicas();
 
